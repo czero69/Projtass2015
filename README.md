@@ -5,8 +5,11 @@ WebImporter.java:
 
 View.java:
 	trzeba zmienic rozmieszczenie kolumn i wielkosc okna tak zeby mozna bylo przeczytac nazwy, a impact fator nie zajmowal za duzo miejsca;
+	
 	trzeba dodac mozliwosc powiekszania okna
+	
 	mozna zrobic zablokowanie przyciskow na czas szukania;
+	
 	mozna zrobic informacje na temat tego jakie mozna wpisywac zapytania np. ((java AND xml) OR python) NOT javascript
 
 
