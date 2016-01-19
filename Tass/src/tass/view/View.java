@@ -96,7 +96,10 @@ public class View extends JFrame implements Runnable{
 			rowArray = new Object[3];
 			rowArray[0] = row.getArticleName();
 			rowArray[1] = row.getMagazineName();
-			rowArray[2] = row.getImpactFactor();
+			if(row.getImpactFactor()>=0)
+				rowArray[2] = row.getImpactFactor();
+			else
+				rowArray[2] = "Brak danych";
 			model.addRow(rowArray);
 		}
 	}

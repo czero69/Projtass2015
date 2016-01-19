@@ -3,9 +3,9 @@ package tass.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import tass.data.Article;
-import tass.data.Magazine;
 import tass.data.Row;
 import tass.importer.FileImporter;
 import tass.importer.WebImporter;
@@ -15,11 +15,11 @@ public class Controller{
 
 	private View view;
 	private Thread guiThread;
-	private List<Magazine> magazineList;
+	private Map<String, Double> magazineMap;
 	private WebImporter webImporter = new WebImporter();
 	
 	public void start() throws IOException{
-		magazineList = (new FileImporter()).getMagazineList();
+		magazineMap = (new FileImporter()).getMagazineMap();
 		guiThread = new Thread(view);
 		guiThread.start();
 		view.setController(this);
@@ -31,29 +31,22 @@ public class Controller{
 	
 	public List<Row> getDataForValue(String userInput){
 		List<Row> rowData = new ArrayList<Row>();
-		List<String> keyWords = getListOfWords(userInput);
-		List<Article> articleList = webImporter.getArticleNamesForWords(keyWords);
+		List<Article> articleList = webImporter.getArticlesForWords(userInput);
 		
-		//connect articles with magazines (on magazine name) to create rows (articleName, magazineName, impactFactor)
-		
-		//test - replace with real implelentation
-		Row testRow = new Row();
-		testRow.setArticleName("test name");
-		testRow.setMagazineName(magazineList.get(0).getMagazineName());
-		testRow.setImpactFactor(magazineList.get(0).getImpactFactor());
-		rowData.add(testRow);
-		//end test
+		for(Article article : articleList){
+			Row testRow = new Row();
+			testRow.setArticleName(article.getArticleName());
+			testRow.setMagazineName(article.getMagazineName());
+			String searchString = article.getMagazineName().toLowerCase().replace("&", "and");
+			if(magazineMap.containsKey(searchString)){
+				testRow.setImpactFactor(magazineMap.get(searchString));
+			} else {
+				testRow.setImpactFactor(-1);
+			}
+			rowData.add(testRow);
+		}
 		
 		return rowData;
 	}
 	
-	private List<String> getListOfWords(String userInput){
-		List<String> keyWords = new ArrayList<String>();
-		
-		//get keyWords form user input
-		
-		return keyWords;
-	}
-	
-
 }
