@@ -6,7 +6,8 @@ WebImporter.java:
 
 View.java:
 	
-	trzeba zmienic rozmieszczenie kolumn i wielkosc okna tak zeby mozna bylo przeczytac nazwy, a impact fator nie zajmowal za duzo miejsca;
+	trzeba zmienic rozmieszczenie kolumn i wielkosc okna tak zeby mozna bylo przeczytac nazwy, 
+	a impact fator nie zajmowal za duzo miejsca;
 	
 	trzeba dodac mozliwosc powiekszania okna
 	
