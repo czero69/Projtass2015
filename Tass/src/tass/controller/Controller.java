@@ -1,5 +1,6 @@
 package tass.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +18,11 @@ public class Controller{
 	private List<Magazine> magazineList;
 	private WebImporter webImporter = new WebImporter();
 	
-	public void start(){
+	public void start() throws IOException{
 		magazineList = (new FileImporter()).getMagazineList();
 		guiThread = new Thread(view);
 		guiThread.start();
+		view.setController(this);
 	}
 	
 	public void setView(View view) {
@@ -33,6 +35,14 @@ public class Controller{
 		List<Article> articleList = webImporter.getArticleNamesForWords(keyWords);
 		
 		//connect articles with magazines (on magazine name) to create rows (articleName, magazineName, impactFactor)
+		
+		//test - replace with real implelentation
+		Row testRow = new Row();
+		testRow.setArticleName("test name");
+		testRow.setMagazineName(magazineList.get(0).getMagazineName());
+		testRow.setImpactFactor(magazineList.get(0).getImpactFactor());
+		rowData.add(testRow);
+		//end test
 		
 		return rowData;
 	}

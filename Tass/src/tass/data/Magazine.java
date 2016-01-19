@@ -5,6 +5,11 @@ public class Magazine {
 		private String magazineName;
 		private double impactFactor;
 		
+		public Magazine(String magazineName, double impactFactor){
+			this.magazineName = magazineName;
+			this.impactFactor = impactFactor;
+		}
+		
 		public String getMagazineName() {
 			return magazineName;
 		}
