@@ -1,29 +1,27 @@
 package tass.view;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JComboBox;
-import java.util.Calendar;
 
 import tass.controller.Controller;
 import tass.data.Row;
-
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
 
 public class View extends JFrame implements Runnable{
 
@@ -123,13 +121,20 @@ public class View extends JFrame implements Runnable{
                 "ImpactFactor"};
 		Object[][] data = {};
 		
+		JLabel jLabel1 = new JLabel();
+		jLabel1.setText("od roku:");
+		JLabel jLabel2 = new JLabel();
+		jLabel2.setText("do:");
+		
 		setLayout(new BorderLayout());
 		JPanel mypanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		
 		mypanel.add(textField);
 		mypanel.add(btnNewButton);
 		mypanel.add(btnNewButton_1);
+		mypanel.add(jLabel1);
 		mypanel.add(yearCombo1);
+		mypanel.add(jLabel2);
 		mypanel.add(yearCombo2);
 		
 		contentPane.add(textField, BorderLayout.PAGE_START);
