@@ -57,6 +57,7 @@ public class View extends JFrame implements Runnable{
 		
 		textField = new JTextField();
 		textField.setSize(700, 20);
+		textField.setToolTipText("przyk³ad u¿ycia logiki w zapytaniu: ((java AND xml) OR python) NOT javascript.");
 		//textField.setBounds(10, 10, 546, 20);
 		//contentPane.add(textField);
 		textField.setColumns(10);
