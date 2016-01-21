@@ -18,6 +18,9 @@ public class Controller{
 	private Map<String, Double> magazineMap;
 	private WebImporter webImporter = new WebImporter();
 	
+	private String year1;
+	private String year2;
+	
 	public void start() throws IOException{
 		magazineMap = (new FileImporter()).getMagazineMap();
 		guiThread = new Thread(view);
@@ -29,9 +32,14 @@ public class Controller{
 		this.view = view;
 	}
 	
+	public void setYears(String year1, String year2) {
+		this.year1 = year1;
+		this.year2 = year2;
+	}
+	
 	public List<Row> getDataForValue(String userInput){
 		List<Row> rowData = new ArrayList<Row>();
-		List<Article> articleList = webImporter.getArticlesForWords(userInput);
+		List<Article> articleList = webImporter.getArticlesForWords(userInput, year1, year2);
 		
 		for(Article article : articleList){
 			Row testRow = new Row();

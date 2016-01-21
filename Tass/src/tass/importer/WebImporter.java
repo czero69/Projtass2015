@@ -20,9 +20,9 @@ import tass.data.Article;
 
 public class WebImporter {
 	
-	public List<Article> getArticlesForWords(String keyWords){
+	public List<Article> getArticlesForWords(String keyWords, String year1, String year2){
 		List<Article> articles = new ArrayList<Article>();
-		String urlString = generateUrl(keyWords);
+		String urlString = generateUrl(keyWords,year1,year2);
 		//get articles for words from IEEE database
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
@@ -68,11 +68,13 @@ public class WebImporter {
 		return title;
 	}
 	
-	private String generateUrl(String keyWords){
+	private String generateUrl(String keyWords, String year1, String year2){
 		String firstPart = "http://ieeexplore.ieee.org/gateway/ipsSearch.jsp?querytext=(";
-		String secondPart = ")&pu=IEEE&pys=2016&ctype=Journals&hc=1000";
+		String secondPart = ")&pu=IEEE&pys=";
+		String thirdPart = "&pye=";
+		String fourthPart = "&ctype=Journals&hc=1000";
 		String queryString = keyWords.replace(" ", "%20").replace(")", "%29").replace("(", "%28").toUpperCase();
-		return firstPart+queryString+secondPart;
+		return firstPart+queryString+secondPart+year1+thirdPart+year2+fourthPart;
 	}
 	
 }
