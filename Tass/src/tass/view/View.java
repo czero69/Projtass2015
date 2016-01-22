@@ -57,7 +57,7 @@ public class View extends JFrame implements Runnable{
 		
 		textField = new JTextField();
 		textField.setSize(700, 20);
-		textField.setToolTipText("przyk³ad u¿ycia logiki w zapytaniu: ((java AND xml) OR python) NOT javascript.");
+		textField.setToolTipText("przyklad uzycia logiki w zapytaniu: ((java AND xml) OR python) NOT javascript.");
 		textField.setColumns(10);
 			
 		int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -77,7 +77,7 @@ public class View extends JFrame implements Runnable{
 	      	      
  	    
 		final JButton btnNewButton = new JButton("Szukaj");
-		final JButton btnNewButton_1 = new JButton("Wyczyœæ");
+		final JButton btnNewButton_1 = new JButton("Wyczysc");
 		
 		btnNewButton.addActionListener(new ActionListener()
 		{
