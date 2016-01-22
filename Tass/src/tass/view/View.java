@@ -53,13 +53,11 @@ public class View extends JFrame implements Runnable{
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new BorderLayout());
 		
 		textField = new JTextField();
 		textField.setSize(700, 20);
 		textField.setToolTipText("przyk³ad u¿ycia logiki w zapytaniu: ((java AND xml) OR python) NOT javascript.");
-		//textField.setBounds(10, 10, 546, 20);
-		//contentPane.add(textField);
 		textField.setColumns(10);
 			
 		int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -77,23 +75,14 @@ public class View extends JFrame implements Runnable{
 	    yearCombo1.setSelectedIndex(0);
 	    yearCombo2.setSelectedIndex(0);
 	      	      
-	    //yearCombo1.setBounds(800, 9, 99, 23);
-	    //yearCombo2.setBounds(1000, 9, 99, 23);
-	    //contentPane.add(yearCombo1);
-	    //contentPane.add(yearCombo2);
-		
-  	    
+ 	    
 		final JButton btnNewButton = new JButton("Szukaj");
 		final JButton btnNewButton_1 = new JButton("Wyczyœæ");
-		//btnNewButton.setBounds(566, 9, 99, 23);
-		//contentPane.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener()
 		{
 		    public void actionPerformed(ActionEvent e)
 		    {
-		    	//btnNewButton.setEnabled(false);
-		    	//btnNewButton_1.setEnabled(false);
 		    	
 		    	String year1 = "", year2 = "";
 		    	if (yearCombo1.getSelectedIndex() != -1 && yearCombo2.getSelectedIndex() != -1 ) {                     
@@ -105,7 +94,6 @@ public class View extends JFrame implements Runnable{
 		    	displayRowsForInput(textField.getText());
 		    }
 		});
-		//btnNewButton_1.setBounds(675, 9, 99, 23);
 		btnNewButton_1.addActionListener(new ActionListener()
 		{
 		    public void actionPerformed(ActionEvent e)
@@ -114,8 +102,6 @@ public class View extends JFrame implements Runnable{
 		    	removeAllRows();
 		    }
 		});
-		
-		//contentPane.add(btnNewButton_1);
 		
 		String[] columnNames = {"Nazwa publikacji",
                 "Czasopismo",
@@ -127,7 +113,6 @@ public class View extends JFrame implements Runnable{
 		JLabel jLabel2 = new JLabel();
 		jLabel2.setText("do:");
 		
-		setLayout(new BorderLayout());
 		JPanel mypanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		
 		mypanel.add(textField);
@@ -140,9 +125,7 @@ public class View extends JFrame implements Runnable{
 		
 		contentPane.add(textField, BorderLayout.PAGE_START);
 		contentPane.add(mypanel, BorderLayout.PAGE_END);
-		
-		//setLayout(new BorderLayout());
-		
+				
 		model = new DefaultTableModel(data, columnNames);
 		
 		table = new JTable(model);
@@ -150,12 +133,8 @@ public class View extends JFrame implements Runnable{
 		table.getColumnModel().getColumn(1).setPreferredWidth(200);
 		table.getColumnModel().getColumn(2).setPreferredWidth(20);
 		table.getColumnModel().getColumn(2).setResizable(false);
-		
-		//contentPane.add(table, BorderLayout.SOUTH);
-		//table.setAutoResizeMode( JTable.AUTO_RESIZE_OFF );
-		
+				
 		scrollPane = new JScrollPane(table);
-		//scrollPane.setBounds(10, 41, 764, 459);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
 	}
